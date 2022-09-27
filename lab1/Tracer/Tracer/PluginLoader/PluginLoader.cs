@@ -12,7 +12,6 @@ namespace PluginLoader
     {
         private const string Path = "../../../../../../Serialization/Serialization/Plugins";
         private const string FullPath = "C:/Users/sasha/OneDrive/Рабочий стол/BSUIR/Сourse 3/Sem 1/СПП/lab1/Serialization/Serialization/Plugins";
-        //private const string AssemblyPath = "/bin/Debug/net5.0";
         private const string DllExt = "*.dll";
         public List<Type> plugins = new List<Type>();
 

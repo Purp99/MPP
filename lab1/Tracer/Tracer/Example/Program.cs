@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 
 namespace Example
 {
     class Program
     {
+        private static Tracer _tracer;
+
         static void serializeUsingPlugins(List<Type> plugins, Serialization.TraceResultDto traceResult)
         {
             foreach (Type type in plugins)
@@ -20,17 +24,25 @@ namespace Example
             }
         }
 
+        public static void M1()
+        {
+            _tracer.StartTrace();
+            Thread.Sleep(100);
+            _tracer.StopTrace();
+        }
+
         static void Main(string[] args)
         {
             PluginLoader.PluginLoader pluginLoader = new PluginLoader.PluginLoader();
             pluginLoader.LoadPlugins();
 
-            Core.Tracer tracer = new Core.Tracer();
-            Foo foo = new Foo(tracer);
+            _tracer = new Tracer();
+            Foo foo = new Foo(_tracer);
             foo.MyMethod();
+            Thread th = new Thread(M1);
+            th.Start();
 
-
-            serializeUsingPlugins(pluginLoader.plugins, Serialization.Dto.CreateTraceResultDto(tracer.GetTraceResult()));
+            serializeUsingPlugins(pluginLoader.plugins, Serialization.Dto.CreateTraceResultDto(_tracer.GetTraceResult()));
         }
     }
 }

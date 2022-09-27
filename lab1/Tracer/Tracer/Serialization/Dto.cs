@@ -40,8 +40,8 @@ namespace Serialization
                 }
 
                 methodResultDtoList.Add(new MethodResultDto(
-                        methodResult.MethodName,
                         methodResult.ClassName,
+                        methodResult.MethodName,
                         methodResult.Time,
                         nestedMethodResultDtoList
                     )
