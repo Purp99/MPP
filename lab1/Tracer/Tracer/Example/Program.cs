@@ -41,7 +41,7 @@ namespace Example
             foo.MyMethod();
             Thread th = new Thread(M1);
             th.Start();
-
+            th.Join();
             serializeUsingPlugins(pluginLoader.plugins, Serialization.Dto.CreateTraceResultDto(_tracer.GetTraceResult()));
         }
     }

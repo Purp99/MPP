@@ -13,18 +13,16 @@ namespace Core
     {
         [DataMember]
         public ConcurrentDictionary<int, ThreadResult> ThreadsResult { get; }
+        //public IReadOnlyDictionary<int, ThreadResult> Threads { get; }
 
-        public TraceResult(ConcurrentDictionary<int, ThreadResult> threadResults)
+        public TraceResult(ConcurrentDictionary<int, ThreadResult> threadsResult)
         {
-            ThreadsResult = threadResults;
+            ThreadsResult = threadsResult;
         }
 
         public TraceResult() { }
 
-        public ConcurrentDictionary<int, ThreadResult> GetThreadResults()
-        {
-            return ThreadsResult;
-        }
+        
 
         public ThreadResult GetThreadResult(int id)
         {

@@ -31,7 +31,7 @@ namespace Core
         {
             var thread = _traceResult.GetThreadResult(Thread.CurrentThread.ManagedThreadId);
             var stackTrace = new StackTrace();
-
+           
 
             var path = stackTrace.ToString().Split(new string[] { "\r\n" }, StringSplitOptions.None);
             path[0] = "";
