@@ -85,7 +85,7 @@ namespace CoreLib
 
             try
             {
-                foreach (var dirPath in dirInfo.EnumerateDirectories())//.Where(dir1 => dir1.LinkTarget == null)
+                foreach (var dirPath in dirInfo.EnumerateDirectories())
                 {
                     if (_cancellationToken.IsCancellationRequested)
                         return;
@@ -109,7 +109,7 @@ namespace CoreLib
                     }
                 }
 
-                foreach (var dirPath in dirInfo.EnumerateFiles())//.Where(file => file.LinkTarget == null)
+                foreach (var dirPath in dirInfo.EnumerateFiles())
                 {
                     if (_cancellationToken.IsCancellationRequested)
                         return;
@@ -122,7 +122,7 @@ namespace CoreLib
 
             }
 
-            //Trace.WriteLine(_semaphore.CurrentCount);
+          
             _semaphore.Release();
         }
 
